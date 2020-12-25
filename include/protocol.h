@@ -23,7 +23,6 @@
 #define protocol_h
 
 #ifdef __cplusplus
-//extern "C" {
 namespace EmbeddedC {
 #endif
 
@@ -41,12 +40,6 @@ namespace EmbeddedC {
   #define LINE_BUFFER_SIZE 50
 #endif
 
-// Define protocol bit map. Used internally by protocol to get the command code and
-// the length of a new message.
-// #define MSG_LEN 0b00001111
-// #define MSG_CMD 0b11110000
-// #define GET_MSG_CMD(x) (((x) & MSG_CMD) >> 4)
-
 // Define the maximun nomber of read cycles, to avoid inifinite loops:
 #define MAX_CYCLIC_READ LINE_BUFFER_SIZE
 
@@ -61,15 +54,6 @@ void protocol_init();
 // come in. Blocks until the serial buffer is emptied. 
 void protocol_read();
 
-// Executes one line of input according to protocol
-uint8_t protocol_execute_line(char *line);
-
-// Checks and executes a runtime command at various stop points in main program
-void protocol_execute_runtime();
-
-//// Execute the startup script lines stored in EEPROM upon initialization
-//void protocol_execute_startup();
-
 //#ifndef __cplusplus
 // Write frames to the serial port.
 void protocol_write(char* frame, uint8_t len);
@@ -77,8 +61,6 @@ void protocol_write(char* frame, uint8_t len);
 
 #ifdef __cplusplus
 } // closing brace for the EmbeddedC namespace
-
-//} // closing brace for extern "C"
 #endif
 
 #endif
