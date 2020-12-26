@@ -1,6 +1,7 @@
 #include "sysenv.h"
 #include <stdint.h>
 
+
 #if defined(__cplusplus)
 namespace EmbeddedC {
 #endif
@@ -333,5 +334,5 @@ char* SysEnv_Rd_MemDriver_S_Data_Wr(void){
 }
 
 #if defined(__cplusplus)
-}
+} // Closing brace for namespace EmbeddedC
 #endif

@@ -1,5 +1,4 @@
-#ifdef __cplusplus
-//extern "C" {
+#if defined(__cplusplus)
 namespace EmbeddedC {
 #endif
 
@@ -37,8 +36,9 @@ void set_msg_motor_01(void);
 
 //Outgoing message selector:
 void set_msg(uint8_t cmd);
-#endif
 
-#ifdef __cplusplus
-} // closing brace for extern "C"
+#endif // database_h
+
+#if defined(__cplusplus)
+} // Closing brace for namespace EmbeddedC
 #endif

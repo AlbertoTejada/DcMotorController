@@ -3,10 +3,10 @@
 #include "protocol.h"
 #include <stdint.h>
 
+
 #if defined(__cplusplus)
 namespace EmbeddedC {
 #endif
-
 
 void get_msg(char* frame){
     uint8_t cmd = SysEnv_Rd_DataBase_Cmd();
@@ -100,5 +100,5 @@ void set_msg_motor_01(void){
 }
 
 #if defined(__cplusplus)
-}
+} // Closing brace for namespace EmbeddedC
 #endif

@@ -1,6 +1,6 @@
-#ifdef __cplusplus
-extern "C" {
+#if defined(__cplusplus)
 namespace EmbeddedC {
+extern "C" {
 #endif
 
 #ifndef systemenviroment_h
@@ -146,10 +146,10 @@ uint16_t SysEnv_Rd_MemDriver_S_Data_Ad(void);
 uint16_t SysEnv_Rd_MemDriver_S_Data_Ln(void);
 char* SysEnv_Rd_MemDriver_S_Data_Wr(void);
 
-#endif
 
-#ifdef __cplusplus
-}// closing brace for namespace
+#endif // systemenviroment_h
 
-} // closing brace for extern "C"
+#if defined(__cplusplus)
+} // Closing brace for extern "C"
+} // Closing brace for namespace EmbeddedC
 #endif
