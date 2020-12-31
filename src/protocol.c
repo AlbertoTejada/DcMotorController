@@ -63,7 +63,7 @@ void protocol_read()
     if (serial_avail == SERIAL_AVAIL)
     {
       // New message received:
-      if (msglen == 0) 
+      if (msglen == (uint8_t)0)
       {
         canid = data;
         // Get the message length associated to the message ID:
@@ -89,7 +89,7 @@ void protocol_read()
       // Message reception in process:
       else {
         // Last byte check:
-        if (char_counter >= (msglen - 1))
+        if (char_counter >= (msglen - (uint8_t)1))
         {
           if (data == EOL)
           {
@@ -106,7 +106,8 @@ void protocol_read()
         }
         // Incoming byte:
         else {
-          line[char_counter++] = data;
+          line[char_counter] = data;
+          char_counter++;
         }
     }
     }
@@ -120,13 +121,13 @@ void protocol_read()
 } 
 
 //Write one frame of outcoming serial data
-void protocol_write(char* frame, uint8_t len)
+void protocol_write(char frame[], uint8_t len)
 {
   char c;
   uint8_t idx = 0;
   for (idx = 0; idx < len; idx++)
    {
-     c = *(frame + idx);
+     c = frame[idx];
      serial_write((uint8_t)c);
    }
    serial_write((uint8_t)EOL);

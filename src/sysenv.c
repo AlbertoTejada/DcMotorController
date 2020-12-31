@@ -35,9 +35,9 @@ int16_t Sys_EncodersDriver_S_Rgt_Spd;
 int16_t Sys_EncodersDriver_S_Lft_Spd;
 int16_t Sys_SystemSignalAdapter_S_Rgt_Target;
 int16_t Sys_SystemSignalAdapter_S_Lft_Target;
-struct ControlParameters Sys_ServicesManager_S_Set_Control_Params;
+ControlParameters Sys_ServicesManager_S_Set_Control_Params;
 uint8_t Sys_ServicesManager_S_Set_System_Config;
-struct ControlParameters Sys_MemManager_S_Control_Parameters;
+ControlParameters Sys_MemManager_S_Control_Parameters;
 int16_t Sys_MotionControl_S_Rgt_Pwr;
 int16_t Sys_MotionControl_S_Lft_Pwr;
 uint8_t Sys_TemperatureDriver_S_Rgt_Temp;
@@ -224,10 +224,10 @@ void SysEnv_Wr_SystemSignalAdapter_S_Lft_Target(int16_t data){
 int16_t SysEnv_Rd_MotionControl_S_Lft_Target(void){
     return Sys_SystemSignalAdapter_S_Lft_Target;
 }
-void SysEnv_Wr_ServicesManager_S_Set_Control_Params(struct ControlParameters data){
+void SysEnv_Wr_ServicesManager_S_Set_Control_Params(ControlParameters data){
     Sys_ServicesManager_S_Set_Control_Params = data;
 }
-struct ControlParameters SysEnv_Rd_MemManager_S_Set_Control_Params(void){
+ControlParameters SysEnv_Rd_MemManager_S_Set_Control_Params(void){
     return Sys_ServicesManager_S_Set_Control_Params;
 }
 void SysEnv_Wr_ServicesManager_S_Set_System_Config(uint8_t data){
@@ -236,10 +236,10 @@ void SysEnv_Wr_ServicesManager_S_Set_System_Config(uint8_t data){
 uint8_t SysEnv_Rd_MemManager_S_Set_System_Config(void){
     return Sys_ServicesManager_S_Set_System_Config;
 }
-void SysEnv_Wr_MemManager_S_Control_Parameters(struct ControlParameters data){
+void SysEnv_Wr_MemManager_S_Control_Parameters(ControlParameters data){
     Sys_MemManager_S_Control_Parameters = data;
 }
-struct ControlParameters SysEnv_Rd_MotionControl_S_Control_Parameters(void){
+ControlParameters SysEnv_Rd_MotionControl_S_Control_Parameters(void){
     return Sys_MemManager_S_Control_Parameters;
 }
 void SysEnv_Wr_MotionControl_S_Rgt_Pwr(int16_t data){

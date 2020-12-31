@@ -23,23 +23,23 @@ void get_msg(char* frame){
     }
 }
 
-void get_msg_tester_present(char* frame){
+void get_msg_tester_present(char frame[]){
     //Nothing to do
 }
 
-void get_msg_master_01(char* frame){
+void get_msg_master_01(char frame[]){
     /*State requested from the master:
     0 = INIT
     1 = ACTIVE
     2 = CONFIG
     255 = Error*/
-    uint8_t state = *frame;
+    uint8_t state = (frame[0]);
     SysEnv_Wr_DataBase_Master_01_State(state);
     /*Right motor target value*/
-    int16_t rgt_motor = *(frame + 1) | ((*(frame + 2)) << 8);
+    int16_t rgt_motor = (frame[1]) | ((frame[2]) << 8);
     SysEnv_Wr_DataBase_Master_01_Rgt_Motor(rgt_motor);
     /*Left motor target value*/
-    int16_t lft_motor = *(frame + 3) | ((*(frame + 4)) << 8);
+    int16_t lft_motor = (frame[3]) | ((frame[4]) << 8);
     SysEnv_Wr_DataBase_Master_01_Lft_Motor(lft_motor);
 }
 

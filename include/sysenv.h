@@ -37,7 +37,7 @@ typedef enum {
     FLAG_YES = 1
 } ControlFlag;
 
-struct ControlParameters {
+typedef struct {
     double p;
     double i;
     double d;
@@ -47,7 +47,7 @@ struct ControlParameters {
     uint16_t min_bwd_spd;
     uint8_t min_bwd_pwr;
     uint16_t max_bwd_spd;
-};
+}ControlParameters;
 
 //System environment parameters write functions prototypes:
 void SysEnv_Wr_protocol_Cmd(uint8_t data);
@@ -78,9 +78,9 @@ void SysEnv_Wr_EncodersDriver_S_Rgt_Spd(int16_t data);
 void SysEnv_Wr_EncodersDriver_S_Lft_Spd(int16_t data);
 void SysEnv_Wr_SystemSignalAdapter_S_Rgt_Target(int16_t data);
 void SysEnv_Wr_SystemSignalAdapter_S_Lft_Target(int16_t data);
-void SysEnv_Wr_ServicesManager_S_Set_Control_Params(struct ControlParameters data);
+void SysEnv_Wr_ServicesManager_S_Set_Control_Params(ControlParameters data);
 void SysEnv_Wr_ServicesManager_S_Set_System_Config(uint8_t data);
-void SysEnv_Wr_MemManager_S_Control_Parameters(struct ControlParameters data);
+void SysEnv_Wr_MemManager_S_Control_Parameters(ControlParameters data);
 void SysEnv_Wr_MotionControl_S_Rgt_Pwr(int16_t data);
 void SysEnv_Wr_MotionControl_S_Lft_Pwr(int16_t data);
 void SysEnv_Wr_TemperatureDriver_S_Rgt_Temp(uint8_t data);
@@ -127,9 +127,9 @@ int16_t SysEnv_Rd_SystemSignalAdapter_S_Rgt_Spd(void);
 int16_t SysEnv_Rd_SystemSignalAdapter_S_Lft_Spd(void);
 int16_t SysEnv_Rd_MotionControl_S_Rgt_Target(void);
 int16_t SysEnv_Rd_MotionControl_S_Lft_Target(void);
-struct ControlParameters SysEnv_Rd_MemManager_S_Set_Control_Params(void);
+ControlParameters SysEnv_Rd_MemManager_S_Set_Control_Params(void);
 uint8_t SysEnv_Rd_MemManager_S_Set_System_Config(void);
-struct ControlParameters SysEnv_Rd_MotionControl_S_Control_Parameters(void);
+ControlParameters SysEnv_Rd_MotionControl_S_Control_Parameters(void);
 int16_t SysEnv_Rd_MotorsDriver_S_Rgt_Pwr(void);
 int16_t SysEnv_Rd_MotorsDriver_S_Lft_Pwr(void);
 uint8_t SysEnv_Rd_HealthMonitor_S_Rgt_Temp(void);
