@@ -1,11 +1,8 @@
-#if defined(__cplusplus)
-namespace EmbeddedC {
-#endif
-
-#ifndef database_h
-#define database_h
+#ifndef _DATABASE_H_
+#define _DATABASE_H_
 
 #include <stdint.h>
+#include "Can.h"
 
 
 //Messages ID definitions:
@@ -24,21 +21,26 @@ namespace EmbeddedC {
 #define MOTOR_01_CALIBRATION 0x01 //Signal calibration from message motor_01
 
 
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 //Received message parse functions declaration:
-void get_msg_tester_present(char* frame);
-void get_msg_master_01(char* frame);
+void get_msg_uds_motor_01(uint8_t frame[]);
+void get_msg_xcp_motor_01(uint8_t frame[]);
+void get_msg_motion_control(uint8_t frame[]);
 
 //Incoming message selector:
-void get_msg(char* frame);
+void get_msg(struct can_frame* frame);
 
 //Sent message build functions declaration:
-void set_msg_motor_01(void);
+void set_msg_speed_and_direction(struct can_frame* frame);
 
 //Outgoing message selector:
-void set_msg(uint8_t cmd);
-
-#endif // database_h
+struct can_frame set_msg(uint32_t can_id);
 
 #if defined(__cplusplus)
-} // Closing brace for namespace EmbeddedC
+} // Closing brace for extern "C"
 #endif
+
+#endif // _DATABASE_H_
